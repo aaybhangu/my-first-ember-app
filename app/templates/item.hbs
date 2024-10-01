@@ -1,0 +1,25 @@
+{{page-title "Item"}}
+{{!--LinkTo @route="cart" class="cart-link">
+<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+</LinkTo>
+<main class="container mt-5">
+    <p>Item Route: {{this.model}}</p>
+    </main--}} {{outlet}} <GeneralContainer>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <LinkTo @route="index">Home</LinkTo>
+        </li>
+        <li class="breadcrumb-item">Product Detail</li>
+    </ol>
+    <div class="product item-details-page {{if this.isZoomed 'is-zoomed' }}">
+        <Product::Image @src={{this.productImage}} @toggleZoom={{this.toggleZoom}} />
+        <Product::Detail @name={{this.model.name}} @price={{this.model.price}} @isDetails={{true}}
+            @colors={{this.model.colors}} @color={{this.color}} @onColorChange={{this.onColorChange}} />
+    </div>
+    <h5 class="mt-5">Features</h5>
+    <ul>
+        {{#each this.model.features as |feature|}}
+        <li>{{feature}}</li>
+        {{/each}}
+    </ul>
+    </GeneralContainer>
